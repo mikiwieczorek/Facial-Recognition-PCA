@@ -1,3 +1,6 @@
+#Facial Recognition: Principal Component Analysis
+-------------------------------------------------
+
 1.  [Problem Description](#problem-description)
 2.  [Mean center the image matrix](#mean-center-the-image-matrix)
 3.  [Perform SVD of the mean centered image
