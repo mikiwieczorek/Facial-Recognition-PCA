@@ -1,7 +1,5 @@
 # Facial-Recognition-PCA
 
-# Facial-Recognition-PCA
-
 ```{r include=FALSE}
 #Loading the data frames and functions provided
 load("~/OneDrive - MNSCU/Unsupervised_Learning_DSCI415/Assignmenet4/Assing4/Olivetti.rdata")
