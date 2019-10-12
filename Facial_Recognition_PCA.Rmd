@@ -2,7 +2,10 @@
 title: "Facial Recognition: Principal Component Analysis."
 author: "Mikolaj Wieczorek"
 date: "10/10/2019"
-output: github_document
+output: 
+  md_document:
+    variant: markdown_github
+      
 ---
 1. [Problem Description]
 2. [Mean center the image matrix]
