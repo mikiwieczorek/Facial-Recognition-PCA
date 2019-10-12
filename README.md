@@ -1,4 +1,4 @@
-#Facial Recognition: Principal Component Analysis
+Facial Recognition: Principal Component Analysis
 -------------------------------------------------
 
 1.  [Problem Description](#problem-description)
