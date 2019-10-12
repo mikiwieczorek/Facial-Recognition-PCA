@@ -1,5 +1,3 @@
-# Facial Recognition: Principal Component Analysis
-
 1.  [Problem Description](#problem-description)
 2.  [Mean center the image matrix](#mean-center-the-image-matrix)
 3.  [Perform SVD of the mean centered image
@@ -54,7 +52,7 @@ for (i in 1:80){
 }
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/image%20plot-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/image%20plot%20first%2010%20subjects-1.png)
 
 Mean center the image matrix
 ----------------------------
@@ -69,7 +67,7 @@ OTmean = apply(OlivettiTrain, 1, mean)
 face.plot(as.matrix(OTmean))
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/face%20plot%20of%20the%20average-1.png)
 
 ``` r
 #Replicate 320 times, 10304x320 matrix
@@ -122,7 +120,7 @@ par(mfrow=c(10,8), mar=c(0,0,0,0), xaxt = "n", yaxt = "n")
 for (i in 1:80){face.plot(TEST, i)}
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/test_reproduce_original-1.png)
 
 It checks out.
 
@@ -132,7 +130,7 @@ It checks out.
 plot(1:320, faces.svd$d, type = "b", main = "Scree Plot for Olivetti Faces")
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/scree%20plot-1.png)
 
 ### See how distorted images are by using diffrent k values.
 
@@ -147,7 +145,7 @@ for (i in 1:80){
 }
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/approx30-1.png)
 
 Try k=25.
 
@@ -160,7 +158,7 @@ for (i in 1:80){
 }
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/approx25-1.png)
 
 Try k=20.
 
@@ -173,7 +171,7 @@ for (i in 1:80){
 }
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-14-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/approx20-1.png)
 
 Try k=10.
 
@@ -186,7 +184,7 @@ for (i in 1:80){
 }
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-15-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/approx10-1.png)
 <br></br>
 
 Classifying Test Images
@@ -247,7 +245,7 @@ face20.approx = U[,1:20]%*%matrix(Vnew20[,15],20,1) + OTmean
 face.plot(face20.approx)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-20-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/#15_approx_k_20-1.png)
 
 ``` r
 #Distance function for weight vectors, k=20
@@ -266,7 +264,7 @@ weightdist = function(vnew,V,k=20) {
 face.plot(OlivettiTest, 15)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-22-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/plot#15-1.png)
 
 ``` r
 #Grab v_new vector for test image 15.
@@ -285,7 +283,7 @@ weightdist(Vnew20[,15],V)
 face.plot(OlivettiTrain, 120)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-25-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/check#15-1.png)
 
 <br></br>In the train data, test image \#15 is in train pictures 113-120
 (including).
@@ -296,7 +294,7 @@ face.plot(OlivettiTrain, 120)
 face.plot(OlivettiTest, 16)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-26-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/plot#16-1.png)
 
 ``` r
 #Grab v_new vector for test image 16.
@@ -315,7 +313,7 @@ weightdist(Vnew20[,16],V)
 face.plot(OlivettiTrain, 126)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-29-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/check#16-1.png)
 
 <b>Classifying Test Image \#13</b>
 
@@ -323,7 +321,7 @@ face.plot(OlivettiTrain, 126)
 face.plot(OlivettiTest, 13)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-30-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/plot#13-1.png)
 
 ``` r
 #Grab v_new vector for test image 13.
@@ -342,7 +340,7 @@ weightdist(Vnew20[,13],V)
 face.plot(OlivettiTrain, 102)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-33-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/check#13-1.png)
 
 <b>Classifying Test Image \#14</b>
 
@@ -350,7 +348,7 @@ face.plot(OlivettiTrain, 102)
 face.plot(OlivettiTest, 14)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-34-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/plot#14-1.png)
 
 ``` r
 #Grab v_new vector for test image 14.
@@ -369,7 +367,7 @@ weightdist(Vnew20[,14],V)
 face.plot(OlivettiTrain, 106)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-37-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/check#14-1.png)
 
 ### Using k=15.
 
@@ -387,7 +385,7 @@ face15.approx = U[,1:15]%*%matrix(Vnew15[,15],15,1) + OTmean
 face.plot(face15.approx)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-39-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-15-1.png)
 
 ``` r
 #Distance function for weight vectors
@@ -406,7 +404,7 @@ weightdist = function(vnew,V,k=15) {
 face.plot(OlivettiTest, 15)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-41-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-17-1.png)
 
 ``` r
 #Grab v_new vector for test image 15.
@@ -425,7 +423,7 @@ weightdist(Vnew15[,15],V)
 face.plot(OlivettiTrain, 120)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-44-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-20-1.png)
 
 <b>Classifying Test Image \#16</b>
 
@@ -433,7 +431,7 @@ face.plot(OlivettiTrain, 120)
 face.plot(OlivettiTest, 16)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-45-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-21-1.png)
 
 ``` r
 #Grab v_new vector for test image 16.
@@ -452,7 +450,7 @@ weightdist(Vnew15[,16],V)
 face.plot(OlivettiTrain, 126)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-48-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-24-1.png)
 
 <b>Classifying Test Image \#13</b>
 
@@ -460,7 +458,7 @@ face.plot(OlivettiTrain, 126)
 face.plot(OlivettiTest, 13)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-49-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-25-1.png)
 
 ``` r
 #Grab v_new vector for test image 13.
@@ -479,7 +477,7 @@ weightdist(Vnew15[,13],V)
 face.plot(OlivettiTrain, 97)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-52-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-28-1.png)
 
 <b>Classifying Test Image \#14</b>
 
@@ -487,7 +485,7 @@ face.plot(OlivettiTrain, 97)
 face.plot(OlivettiTest, 14)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-53-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-29-1.png)
 
 ``` r
 #Grab v_new vector for test image 14.
@@ -506,7 +504,7 @@ weightdist(Vnew15[,14],V)
 face.plot(OlivettiTrain, 106)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-56-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-32-1.png)
 
 <b>Classifying Test Image \#77</b>
 
@@ -514,7 +512,7 @@ face.plot(OlivettiTrain, 106)
 face.plot(OlivettiTest, 77)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-57-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-33-1.png)
 
 ``` r
 #Grab v_new vector for test image 77.
@@ -533,7 +531,7 @@ weightdist(Vnew15[,77],V)
 face.plot(OlivettiTrain, 295)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-60-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-36-1.png)
 
 <b>Classifying Test Image \#80</b>
 
@@ -541,7 +539,7 @@ face.plot(OlivettiTrain, 295)
 face.plot(OlivettiTest, 80)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-61-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-37-1.png)
 
 ``` r
 #Grab v_new vector for test image 80.
@@ -560,7 +558,7 @@ weightdist(Vnew15[,80],V)
 face.plot(OlivettiTrain, 319)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-64-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-40-1.png)
 
 <b>Classifying Test Image \#1</b>
 
@@ -568,7 +566,7 @@ face.plot(OlivettiTrain, 319)
 face.plot(OlivettiTest, 1)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-65-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-41-1.png)
 
 ``` r
 #Grab v_new vector for test image 1.
@@ -587,7 +585,7 @@ weightdist(Vnew15[,1],V)
 face.plot(OlivettiTrain,5)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-68-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-44-1.png)
 
 ### Using k=13.
 
@@ -605,7 +603,7 @@ face13.approx = U[,1:13]%*%matrix(Vnew13[,15],13,1) + OTmean
 face.plot(face13.approx)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-70-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-46-1.png)
 
 ``` r
 #Distance funciton for weight vectors
@@ -624,7 +622,7 @@ weightdist = function(vnew,V,k=13) {
 face.plot(OlivettiTest, 15)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-72-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-48-1.png)
 
 ``` r
 #Grab v_new vector for test image 15.
@@ -643,7 +641,7 @@ weightdist(Vnew13[,15],V)
 face.plot(OlivettiTrain, 120)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-75-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-51-1.png)
 
 <b>Classifying Test Image \#16</b>
 
@@ -651,7 +649,7 @@ face.plot(OlivettiTrain, 120)
 face.plot(OlivettiTest, 16)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-76-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-52-1.png)
 
 ``` r
 #Grab v_new vector for test image 16.
@@ -670,7 +668,7 @@ weightdist(Vnew13[,16],V)
 face.plot(OlivettiTrain, 128)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-79-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-55-1.png)
 
 <b>Classifying Test Image \#13</b>
 
@@ -678,7 +676,7 @@ face.plot(OlivettiTrain, 128)
 face.plot(OlivettiTest, 13)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-80-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-56-1.png)
 
 ``` r
 #Grab v_new vector for test image 13.
@@ -697,7 +695,7 @@ weightdist(Vnew13[,13],V)
 face.plot(OlivettiTrain, 99)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-83-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-59-1.png)
 
 <b>Classifying Test Image \#14</b>
 
@@ -705,7 +703,7 @@ face.plot(OlivettiTrain, 99)
 face.plot(OlivettiTest, 14)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-84-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-60-1.png)
 
 ``` r
 #Grab v_new vector for test image 14.
@@ -724,7 +722,7 @@ weightdist(Vnew13[,14],V)
 face.plot(OlivettiTrain, 106)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-87-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-63-1.png)
 
 <b>Classifying Test Image \#77</b>
 
@@ -732,7 +730,7 @@ face.plot(OlivettiTrain, 106)
 face.plot(OlivettiTest, 77)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-88-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-64-1.png)
 
 ``` r
 #Grab v_new vector for test image 77.
@@ -751,7 +749,7 @@ weightdist(Vnew13[,77],V)
 face.plot(OlivettiTrain, 293)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-91-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-67-1.png)
 
 <b>Classifying Test Image \#80</b>
 
@@ -759,7 +757,7 @@ face.plot(OlivettiTrain, 293)
 face.plot(OlivettiTest, 80)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-92-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-68-1.png)
 
 ``` r
 #Grab v_new vector for test image 80.
@@ -778,7 +776,7 @@ weightdist(Vnew13[,80],V)
 face.plot(OlivettiTrain, 319)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-95-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-71-1.png)
 
 <b>Classifying Test Image \#1</b>
 
@@ -786,7 +784,7 @@ face.plot(OlivettiTrain, 319)
 face.plot(OlivettiTest, 1)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-96-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-72-1.png)
 
 ``` r
 #Grab v_new vector for test image 1.
@@ -805,7 +803,7 @@ weightdist(Vnew13[,1],V)
 face.plot(OlivettiTrain,5)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-99-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-75-1.png)
 
 <b>Classifying Test Image \#44</b>
 
@@ -813,7 +811,7 @@ face.plot(OlivettiTrain,5)
 face.plot(OlivettiTest, 44)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-100-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-76-1.png)
 
 ``` r
 #Grab v_new vector for test image 44.
@@ -832,7 +830,7 @@ weightdist(Vnew13[,44],V)
 face.plot(OlivettiTrain,28)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-103-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-79-1.png)
 
 ### Using k=12.
 
@@ -850,7 +848,7 @@ face12.approx = U[,1:12]%*%matrix(Vnew12[,15],12,1) + OTmean
 face.plot(face12.approx)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-105-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-81-1.png)
 
 ``` r
 #Distance function for weight vectors
@@ -869,7 +867,7 @@ weightdist = function(vnew,V,k=12) {
 face.plot(OlivettiTest, 15)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-107-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-83-1.png)
 
 ``` r
 #Grab v_new vector for test image 15.
@@ -888,7 +886,7 @@ weightdist(Vnew12[,15],V)
 face.plot(OlivettiTrain, 276)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-110-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-86-1.png)
 
 <b>Classifying Test Image \#13</b>
 
@@ -896,7 +894,7 @@ face.plot(OlivettiTrain, 276)
 face.plot(OlivettiTest, 13)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-111-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-87-1.png)
 
 ``` r
 #Grab v_new vector for test image 15.
@@ -915,7 +913,7 @@ weightdist(Vnew12[,13],V)
 face.plot(OlivettiTrain, 125)
 ```
 
-![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-114-1.png)
+![](Facial_Recognition_PCA_files/figure-markdown_github/unnamed-chunk-90-1.png)
 <br></br>
 
 <b>For the given test images above, k=13 appears to be the preferred

@@ -35,7 +35,7 @@ Each image is 112×92 pixels (112 rows and 92 columns of pixels). All images are
 The data is provided by Dr. Brant Deppa.
 
 Generating the plot of images:
-```{r image plot}
+```{r image plot first 10 subjects}
 #This function will plot any chosen image
 face.plot = function(temp,i=1){
   temp = matrix(temp[,i],112,92)
@@ -58,11 +58,11 @@ OTmean = apply(OlivettiTrain, 1, mean)
 ```
 
 ###### Face plot of the average
-```{r}
+```{r face plot of the average}
 face.plot(as.matrix(OTmean))
 ```
 
-```{r}
+```{r dimensions}
 #Replicate 320 times, 10304x320 matrix
 mean.mat = matrix(rep(OTmean, 320), 10304, 320)
 #Check matrix dimension
@@ -70,12 +70,12 @@ dim(mean.mat)
 ```
 
 ###### Form mean centered image matrix
-```{r}
+```{r mean centered image matrix}
 OT.mc = OlivettiTrain - mean.mat #substract to center
 ```
 
 ## Perform SVD of the mean centered image matrix
-```{r}
+```{r SVD of mean centered matrix}
 faces.svd = svd(OT.mc)
 U = faces.svd$u
 V = faces.svd$v
@@ -85,7 +85,7 @@ D = diag(faces.svd$d)
 
 Check dimensions U, V, D.
 U dimensions.
-```{r}
+```{r U dimension}
 dim(U)
 ```
 U dimensions.
@@ -100,7 +100,7 @@ dim(D)
 U contains the eigenfaces (PC scores) and V contains the loadings. 
 
 Reproduce the original faces exactly by checking if X = UDV'.
-```{r}
+```{r test_reproduce_original}
 TEST = U%*%D%*%t(V) + mean.mat
 par(mfrow=c(10,8), mar=c(0,0,0,0), xaxt = "n", yaxt = "n")
 for (i in 1:80){face.plot(TEST, i)}
@@ -109,14 +109,14 @@ for (i in 1:80){face.plot(TEST, i)}
 It checks out.
 
 ### Use scree plot to find k.
-```{r}
+```{r scree plot}
 plot(1:320, faces.svd$d, type = "b", main = "Scree Plot for Olivetti Faces")
 ```
 
 ### See how distorted images are by using diffrent k values.
 
 Try k=30.
-```{r}
+```{r approx30}
 #k=30
 Approx30 = U[,1:30]%*%D[1:30,1:30]%*%t(V[,1:30]) + mean.mat
 par(mfrow=c(10,8), mar=c(0,0,0,0), xaxt = "n", yaxt = "n")
@@ -126,7 +126,7 @@ for (i in 1:80){
 ```
 
 Try k=25.
-```{r}
+```{r approx25}
 #k=25
 Approx25 = U[,1:25]%*%D[1:25,1:25]%*%t(V[,1:25]) + mean.mat
 par(mfrow=c(10,8), mar=c(0,0,0,0), xaxt = "n", yaxt = "n")
@@ -136,7 +136,7 @@ for (i in 1:80){
 ```
 
 Try k=20.
-```{r}
+```{r approx20}
 #k=20
 Approx20 = U[,1:20]%*%D[1:20,1:20]%*%t(V[,1:20]) + mean.mat
 par(mfrow=c(10,8), mar=c(0,0,0,0), xaxt = "n", yaxt = "n")
@@ -146,7 +146,7 @@ for (i in 1:80){
 ```
 
 Try k=10.
-```{r}
+```{r approx10}
 #k=10
 Approx10 = U[,1:10]%*%D[1:10,1:10]%*%t(V[,1:10]) + mean.mat
 par(mfrow=c(10,8), mar=c(0,0,0,0), xaxt = "n", yaxt = "n")
@@ -159,7 +159,7 @@ for (i in 1:80){
 ## Classifying Test Images
 
 Form a 10304x80 matrix with columns equal to the mean pixel vector for the # training images (OTmean).
-```{r}
+```{r matrix_rep_OTmean}
 #Replicate 80 times, 10304x80 matrix
 mean.test.mat = matrix(rep(OTmean,80),10304,80)
 mean.mat = matrix(rep(OTmean, 320), 10304, 320)
@@ -167,11 +167,11 @@ mean.mat = matrix(rep(OTmean, 320), 10304, 320)
 dim(mean.test.mat)
 ```
 Form mean centered image matrix
-```{r}
+```{r center_image_matrix}
 OTest.mc = OlivettiTest - mean.test.mat #substract to center
 ```
 Compute the weight vectors for all 80 test images.
-```{r}
+```{r weight_80_test_images}
 #U'*Mean Centered Matrix for Test
 Vnew = t(U)%*%OTest.mc
 #Check dimensions
@@ -182,11 +182,11 @@ Each column of V_new is the full 320-dimensional projection of the new facial im
 ## Measure the distance between Vnew and V for each of the training images
 ### Using k=20.
 Images #15,16,13 and 14.
-```{r}
+```{r Vnew20}
 Vnew20 = t(U[,1:20])%*%OTest.mc
 ```
 Let’s see how, for, example, image #15 projects into our training eigenface space.
-```{r}
+```{r #15_approx_k_20}
 face20.approx = U[,1:20]%*%matrix(Vnew20[,15],20,1) + OTmean
 face.plot(face20.approx)
 ```
@@ -203,7 +203,7 @@ weightdist = function(vnew,V,k=20) {
 ```
 
 <b>Classifying Test Image #15</b>
-```{r}
+```{r plot#15}
 face.plot(OlivettiTest, 15)
 ```
 
@@ -216,7 +216,7 @@ Vnew = Vnew20[,15]
 weightdist(Vnew20[,15],V)
 ```
 
-```{r}
+```{r check#15}
 #Check whether it's correct.
 face.plot(OlivettiTrain, 120)
 
@@ -225,7 +225,7 @@ face.plot(OlivettiTrain, 120)
 <br></br>In the train data, test image #15 is in train pictures 113-120 (including).
 
 <b>Classifying Test Image #16</b>
-```{r}
+```{r plot#16}
 face.plot(OlivettiTest, 16)
 ```
 
@@ -238,13 +238,13 @@ Vnew = Vnew20[,16]
 weightdist(Vnew20[,16],V)
 ```
 
-```{r}
+```{r check#16}
 #Check whether it's correct.
 face.plot(OlivettiTrain, 126)
 ```
 
 <b>Classifying Test Image #13</b>
-```{r}
+```{r plot#13}
 face.plot(OlivettiTest, 13)
 ```
 
@@ -257,13 +257,13 @@ Vnew = Vnew20[,13]
 weightdist(Vnew20[,13],V)
 ```
 
-```{r}
+```{r check#13}
 #Check whether it's correct.
 face.plot(OlivettiTrain, 102)
 ```
 
 <b>Classifying Test Image #14</b>
-```{r}
+```{r plot#14}
 face.plot(OlivettiTest, 14)
 ```
 
@@ -276,7 +276,7 @@ Vnew = Vnew20[,14]
 weightdist(Vnew20[,14],V)
 ```
 
-```{r}
+```{r check#14}
 #Check whether it's correct.
 face.plot(OlivettiTrain, 106)
 ```
