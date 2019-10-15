@@ -85,7 +85,7 @@ D = diag(faces.svd$d)
 
 Check dimensions U, V, D.
 U dimensions.
-```{r U dimension}
+```{r}
 dim(U)
 ```
 U dimensions.
@@ -182,7 +182,7 @@ Each column of V_new is the full 320-dimensional projection of the new facial im
 ## Measure the distance between Vnew and V for each of the training images
 ### Using k=20.
 Images #15,16,13 and 14.
-```{r Vnew20}
+```{r}
 Vnew20 = t(U[,1:20])%*%OTest.mc
 ```
 Let’s see how, for, example, image #15 projects into our training eigenface space.
@@ -203,7 +203,7 @@ weightdist = function(vnew,V,k=20) {
 ```
 
 <b>Classifying Test Image #15</b>
-```{r plot#15}
+```{r}
 face.plot(OlivettiTest, 15)
 ```
 
