@@ -1,3 +1,6 @@
+#Load the data
+load("~/file_path/Olivetti.rdata")
+
 #This function will plot any chosen image
 face.plot = function(temp,i=1){
   temp = matrix(temp[,i],112,92)
@@ -10,7 +13,7 @@ for (i in 1:80){
   face.plot(OlivettiTrain, i)
 }
 
-reset_par()
+Reset_Plotting_Parameters()
 
 #Step 1: set up matrix containing 320 training images
 #OlivettiTrain
