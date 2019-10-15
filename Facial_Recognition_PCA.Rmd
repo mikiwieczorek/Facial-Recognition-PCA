@@ -216,7 +216,7 @@ Vnew = Vnew20[,15]
 weightdist(Vnew20[,15],V)
 ```
 
-```{r check#15}
+```{r}
 #Check whether it's correct.
 face.plot(OlivettiTrain, 120)
 
@@ -225,7 +225,7 @@ face.plot(OlivettiTrain, 120)
 <br></br>In the train data, test image #15 is in train pictures 113-120 (including).
 
 <b>Classifying Test Image #16</b>
-```{r plot#16}
+```{r}
 face.plot(OlivettiTest, 16)
 ```
 
@@ -238,13 +238,13 @@ Vnew = Vnew20[,16]
 weightdist(Vnew20[,16],V)
 ```
 
-```{r check#16}
+```{r}
 #Check whether it's correct.
 face.plot(OlivettiTrain, 126)
 ```
 
 <b>Classifying Test Image #13</b>
-```{r plot#13}
+```{r}
 face.plot(OlivettiTest, 13)
 ```
 
@@ -257,13 +257,13 @@ Vnew = Vnew20[,13]
 weightdist(Vnew20[,13],V)
 ```
 
-```{r check#13}
+```{r}
 #Check whether it's correct.
 face.plot(OlivettiTrain, 102)
 ```
 
 <b>Classifying Test Image #14</b>
-```{r plot#14}
+```{r}
 face.plot(OlivettiTest, 14)
 ```
 
@@ -276,7 +276,7 @@ Vnew = Vnew20[,14]
 weightdist(Vnew20[,14],V)
 ```
 
-```{r check#14}
+```{r}
 #Check whether it's correct.
 face.plot(OlivettiTrain, 106)
 ```
